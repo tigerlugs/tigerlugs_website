@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiger Lugs — Crafted by VinDee LLC</title>
+  <meta name="description" content="Tiger Lugs is an innovative mobile application crafted by VinDee LLC. Experience seamless performance, modern design, and intelligent tools on iOS.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐅</text></svg>">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #f97316;
+      --bg: #0b0f19;
+      --surface: #111827;
+      --surface-border: #1f2937;
+      --text: #f9fafb;
+      --text-muted: #9ca3af;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font);
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .logo span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--text); }
+    .hero {
+      text-align: center;
+      padding: 5rem 1.5rem 4rem;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.35rem 0.9rem;
+      background: rgba(37, 99, 235, 0.15);
+      color: #60a5fa;
+      border: 1px solid rgba(37, 99, 235, 0.3);
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    h1 .gradient {
+      background: linear-gradient(135deg, #60a5fa 0%, #f97316 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+    }
+    .cta-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-appstore {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: #000;
+      border: 1px solid #374151;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .btn-appstore:hover {
+      transform: translateY(-2px);
+      border-color: #6b7280;
+    }
+    .features {
+      padding: 4rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 3rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: border-color 0.2s;
+    }
+    .card:hover { border-color: rgba(96, 165, 250, 0.4); }
+    .icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .company-section {
+      background: #0d1322;
+      border-top: 1px solid var(--surface-border);
+      border-bottom: 1px solid var(--surface-border);
+      padding: 4rem 1.5rem;
+      text-align: center;
+    }
+    .company-box {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .company-box h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+    .company-box p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+    .contact-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    footer {
+      padding: 3rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .legal-links a {
+      color: var(--text-muted);
+      text-decoration: underline;
+      margin-left: 1.25rem;
+      cursor: pointer;
+    }
+    .legal-links a:hover { color: var(--text); }
+    
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+    }
+    .modal-content {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 16px;
+      max-width: 650px;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 2.5rem;
+      position: relative;
+    }
+    .close-btn {
+      position: absolute;
+      top: 1.25rem; right: 1.25rem;
+      background: none; border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .modal-content h3 { margin-bottom: 1rem; }
+    .modal-content p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="#" class="logo">
+      <span>🐅</span> Tiger Lugs
+    </a>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#about">Company</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="badge">Designed for iOS & Modern Workflows</div>
+      <h1>Intelligent mobile experiences with <span class="gradient">Tiger Lugs</span>.</h1>
+      <p class="subtitle">Experience high-performance design, real-time sync, and seamless mobile management crafted specifically for modern power users.</p>
+      
+      <div class="cta-container">
+        <div class="btn-appstore">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.84c.66-.81 1.11-1.94.99-3.07-.96.04-2.12.64-2.8 1.44-.59.69-1.12 1.83-.98 2.93 1.07.08 2.15-.55 2.79-1.3"/>
+          </svg>
+          <div>
+            <div style="font-size: 0.65rem; text-transform: uppercase; color: #9ca3af;">Coming Soon to</div>
+            <div style="font-size: 1rem; line-height: 1.1;">Apple App Store</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="features">
+      <h2 class="section-title">Built with Precision</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="icon">⚡</div>
+          <h3>Lightning Fast</h3>
+          <p>Engineered natively for low-latency responsiveness, instant caching, and reliable offline capabilities.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🔒</div>
+          <h3>Secure by Default</h3>
+          <p>Enterprise-grade encryption and privacy-focused architecture ensuring your private data stays under your control.</p>
+        </div>
+        <div class="card">
+          <div class="icon">☁️</div>
+          <h3>Real-time Sync</h3>
+          <p>Powered by scalable modern cloud infrastructure for instantaneous updates across all of your active devices.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="company-section">
+      <div class="company-box">
+        <h2>About VinDee LLC</h2>
+        <p>Tiger Lugs is an official software product proudly developed and maintained by <strong>VinDee LLC</strong>, a California limited liability company based in Santa Clara, CA.</p>
+        
+        <div id="contact" style="margin-top: 2rem;">
+          <h3 style="font-size: 1rem; margin-bottom: 0.75rem; color: var(--text-muted);">SUPPORT & INQUIRIES</h3>
+          <a href="mailto:support@tigerlugs.com" class="contact-badge">
+            ✉️ support@tigerlugs.com
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      © 2026 VinDee LLC. All rights reserved.
+    </div>
+    <div class="legal-links">
+      <a onclick="openModal('privacyModal')">Privacy Policy</a>
+      <a onclick="openModal('termsModal')">Terms of Service</a>
+    </div>
+  </footer>
+
+  <!-- Privacy Policy Modal -->
+  <div id="privacyModal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('privacyModal')">&times;</button>
+      <h3>Privacy Policy</h3>
+      <p><strong>Effective Date: September 2026</strong></p>
+      <p>VinDee LLC ("we", "our", or "us") operates Tiger Lugs. We value your privacy and are committed to protecting any personal data entrusted to us.</p>
+      <p><strong>Information Collection:</strong> We collect minimal account data necessary to provide and synchronize our services. We do not sell, rent, or trade your personal information to third parties.</p>
+      <p><strong>Security:</strong> All communication between Tiger Lugs clients and our servers is encrypted in transit using industry-standard protocols.</p>
+      <p><strong>Contact:</strong> For questions regarding our privacy practices, please contact us at support@tigerlugs.com.</p>
+    </div>
+  </div>
+
+  <!-- Terms of Service Modal -->
+  <div id="termsModal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('termsModal')">&times;</button>
+      <h3>Terms of Service</h3>
+      <p><strong>Effective Date: September 2026</strong></p>
+      <p>By using Tiger Lugs and related services operated by VinDee LLC, you agree to comply with and be bound by these Terms of Service.</p>
+      <p><strong>Use of Software:</strong> You are granted a limited, revocable, non-exclusive license to use the Tiger Lugs application in accordance with the Apple App Store Terms and applicable laws.</p>
+      <p><strong>Intellectual Property:</strong> All rights, titles, and interests in and to Tiger Lugs remain the exclusive property of VinDee LLC.</p>
+      <p><strong>Contact:</strong> Contact support@tigerlugs.com for any legal inquiries.</p>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = 'flex';
+    }
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+    window.onclick = function(e) {
+      if (e.target.classList.contains('modal')) {
+        e.target.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
