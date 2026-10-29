@@ -1,404 +1,417 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-site-verification" content="BgoRR10ZT69TWwiBZsBxOqUCnsGwzTKtjXXpV1FkwZ0" />
-  <title>Tiger Lugs — The Platform for Watch Collectors</title>
-  <meta name="description" content="Tiger Lugs is the premier mobile and web platform for watch collectors. Catalog your timepieces, track provenance, strap pairings, and service history. Crafted by VinDee LLC.">
-  <link rel="icon" type="image/png" href="logo.png">
-  <style>
-    :root {
-      --primary: #d97706;
-      --primary-light: #fbbf24;
-      --accent: #f59e0b;
-      --bg: #090d16;
-      --surface: #0f172a;
-      --surface-border: #1e293b;
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
-      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: var(--font);
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.25rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--text);
-      text-decoration: none;
-      letter-spacing: -0.02em;
-    }
-    .logo-img-sm {
-      width: 38px;
-      height: 38px;
-      border-radius: 8px;
-      object-fit: cover;
-      border: 1px solid rgba(245, 158, 11, 0.4);
-    }
-    nav a {
-      color: var(--text-muted);
-      text-decoration: none;
-      margin-left: 1.75rem;
-      font-size: 0.95rem;
-      transition: color 0.2s;
-    }
-    nav a:hover { color: var(--text); }
-    .hero {
-      text-align: center;
-      padding: 3.5rem 1.5rem 4rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .hero-artwork {
-      width: 240px;
-      max-width: 70vw;
-      height: auto;
-      border-radius: 28px;
-      box-shadow: 0 25px 50px -12px rgba(245, 158, 11, 0.25);
-      border: 2px solid rgba(245, 158, 11, 0.35);
-      margin-bottom: 2rem;
-      transition: transform 0.3s ease;
-    }
-    .hero-artwork:hover {
-      transform: translateY(-4px);
-    }
-    .badge {
-      display: inline-block;
-      padding: 0.4rem 1.1rem;
-      background: rgba(217, 119, 6, 0.15);
-      color: #fbbf24;
-      border: 1px solid rgba(245, 158, 11, 0.3);
-      border-radius: 9999px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-    }
-    h1 {
-      font-size: clamp(2.35rem, 5.5vw, 4.15rem);
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.35rem;
-    }
-    h1 .gradient {
-      background: linear-gradient(135deg, #fef08a 0%, #f59e0b 50%, #d97706 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .subtitle {
-      font-size: clamp(1.1rem, 2vw, 1.35rem);
-      color: var(--text-muted);
-      max-width: 720px;
-      margin: 0 auto 2.5rem;
-    }
-    .cta-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1.25rem;
-      flex-wrap: wrap;
-    }
-    .btn-store {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.85rem;
-      background: #000;
-      border: 1px solid #334155;
-      color: #fff;
-      padding: 0.8rem 1.6rem;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: transform 0.2s, border-color 0.2s, background 0.2s;
-    }
-    .btn-store:hover {
-      transform: translateY(-2px);
-      border-color: var(--primary-light);
-      background: #0b1120;
-    }
-    .btn-store svg { flex-shrink: 0; }
-    .store-label {
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #94a3b8;
-    }
-    .store-name {
-      font-size: 1.05rem;
-      line-height: 1.15;
-    }
-    .features {
-      padding: 5rem 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .section-title {
-      text-align: center;
-      font-size: 2.25rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.75rem;
-    }
-    .section-subtitle {
-      text-align: center;
-      color: var(--text-muted);
-      margin-bottom: 3.5rem;
-      font-size: 1.05rem;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--surface-border);
-      border-radius: 18px;
-      padding: 2.25rem;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .card:hover {
-      border-color: rgba(245, 158, 11, 0.45);
-      transform: translateY(-3px);
-    }
-    .icon {
-      font-size: 2.25rem;
-      margin-bottom: 1.25rem;
-      display: inline-block;
-    }
-    .card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.6rem;
-      letter-spacing: -0.01em;
-    }
-    .card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-    .company-section {
-      background: #0b1120;
-      border-top: 1px solid var(--surface-border);
-      border-bottom: 1px solid var(--surface-border);
-      padding: 4.5rem 1.5rem;
-      text-align: center;
-    }
-    .company-box {
-      max-width: 720px;
-      margin: 0 auto;
-    }
-    .company-box h2 {
-      font-size: 1.85rem;
-      margin-bottom: 1rem;
-      letter-spacing: -0.01em;
-    }
-    .company-box p {
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-      font-size: 1rem;
-    }
-    .contact-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: var(--surface);
-      border: 1px solid var(--surface-border);
-      padding: 0.75rem 1.5rem;
-      border-radius: 10px;
-      color: var(--text);
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 500;
-      transition: border-color 0.2s;
-    }
-    .contact-badge:hover {
-      border-color: var(--primary-light);
-    }
-    footer {
-      padding: 3rem 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-    .legal-links a {
-      color: var(--text-muted);
-      text-decoration: underline;
-      margin-left: 1.5rem;
-      cursor: pointer;
-    }
-    .legal-links a:hover { color: var(--text); }
-    
-    /* Modals */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(5px);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-      padding: 1.5rem;
-    }
-    .modal-content {
-      background: var(--surface);
-      border: 1px solid var(--surface-border);
-      border-radius: 16px;
-      max-width: 680px;
-      max-height: 80vh;
-      overflow-y: auto;
-      padding: 2.5rem;
-      position: relative;
-    }
-    .close-btn {
-      position: absolute;
-      top: 1.25rem; right: 1.25rem;
-      background: none; border: none;
-      color: var(--text-muted);
-      font-size: 1.6rem;
-      cursor: pointer;
-    }
-    .modal-content h3 { margin-bottom: 1rem; color: #fff; }
-    .modal-content p { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1rem; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="BgoRR10ZT69TWwiBZsBxOqUCnsGwzTKtjXXpV1FkwZ0" />
+<title>Tiger Lugs · Wear your watches. We'll keep score.</title>
+<meta name="description" content="Tiger Lugs is the app for watch collectors who actually wear their watches. Log what's on your wrist, see what each watch really costs per wear, and keep your collection in a virtual watch box. Coming soon to iPhone and Android.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#F7F5F0">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tigerlugs.com/">
+<meta property="og:title" content="Tiger Lugs · Wear your watches. We'll keep score.">
+<meta property="og:description" content="The app for collectors who actually wear their watches. Coming soon to iPhone and Android. Join the launch list.">
+<meta property="og:image" content="https://tigerlugs.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light;
+    --canvas: #F7F5F0;
+    --card: #FFFFFF;
+    --border: #E2D9CC;
+    --gold: #B8860B;
+    --gold-soft: #D4AF37;
+    --gold-tint: rgba(184, 134, 11, 0.10);
+    --ink: #1B1B1F;
+    --muted: #5B5B63;
+    --faint: #8A8A92;
+    --on-gold: #14161A;
+    --radius: 18px;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    overflow-x: hidden;
+  }
+  a { color: var(--gold); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  .display { font-family: 'Cinzel', Georgia, serif; letter-spacing: 0.06em; }
+
+  /* Header */
+  header { padding: 18px 0 8px; }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+  .brand img { width: 40px; height: 40px; object-fit: contain; }
+  .brand span { font-family: 'Cinzel', Georgia, serif; font-weight: 700; letter-spacing: 0.12em; font-size: 19px; }
+
+  /* Hero */
+  .hero { padding: 12px 0 32px; }
+  .hero .wrap { display: grid; gap: 8px; align-items: center; }
+  .hero-cub { display: flex; justify-content: center; }
+  .hero-cub img { width: min(44vw, 200px); height: auto; animation: float 5s ease-in-out infinite; filter: drop-shadow(0 18px 24px rgba(120, 84, 30, 0.16)); }
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  .eyebrow { font-size: 13.5px; font-weight: 700; letter-spacing: 0.1em; color: var(--gold); text-transform: uppercase; margin: 0 0 10px; }
+  h1 { font-family: 'Cinzel', Georgia, serif; font-weight: 700; font-size: clamp(27px, 7.2vw, 50px); line-height: 1.12; margin: 0 0 14px; letter-spacing: 0.01em; }
+  h1 .gold { color: var(--gold); display: block; }
+  .lede { font-size: 17px; color: var(--muted); margin: 0 0 22px; max-width: 34em; }
+
+  /* Signup card */
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: 0 10px 30px rgba(60, 45, 20, 0.07); }
+  .signup { padding: 16px; max-width: 480px; }
+  .signup label.title { display: block; font-weight: 700; font-size: 15px; margin-bottom: 10px; }
+  .field { display: flex; gap: 8px; flex-wrap: wrap; }
+  .field input[type=email] {
+    flex: 1 1 220px; min-width: 0; height: 50px; padding: 0 14px;
+    border-radius: 12px; border: 1.5px solid var(--border); background: var(--canvas);
+    font: inherit; font-size: 16px; color: var(--ink); outline: none; transition: border-color .15s, box-shadow .15s;
+  }
+  .field input[type=email]:focus { border-color: var(--gold); box-shadow: 0 0 0 4px var(--gold-tint); }
+  .platforms { display: flex; gap: 8px; margin: 12px 0 4px; align-items: center; flex-wrap: wrap; }
+  .platforms .hint { font-size: 13px; color: var(--muted); margin-right: 2px; }
+  .chip {
+    height: 34px; padding: 0 14px; border-radius: 999px; border: 1.5px solid var(--border); background: var(--card);
+    font: inherit; font-size: 13px; font-weight: 600; color: var(--muted); cursor: pointer; transition: all .15s;
+  }
+  .chip[aria-pressed=true] { border-color: var(--gold); background: var(--gold); color: var(--on-gold); }
+  .chip:focus-visible, .btn:focus-visible, .field input:focus-visible { outline: 3px solid var(--gold-tint); outline-offset: 2px; }
+  .btn {
+    height: 50px; padding: 0 22px; border: 0; border-radius: 12px; cursor: pointer;
+    background: var(--gold); color: var(--on-gold); font: inherit; font-weight: 700; font-size: 15px; letter-spacing: 0.04em;
+    transition: transform .1s ease-out, filter .15s; white-space: nowrap;
+  }
+  .btn:hover { filter: brightness(1.06); }
+  .btn:active { transform: scale(0.97); }
+  .btn[disabled] { opacity: .65; cursor: default; }
+  .signup .submit { width: 100%; margin-top: 12px; }
+  .fine { font-size: 12.5px; color: var(--faint); margin: 10px 2px 0; }
+  .error { color: #B3261E; font-size: 13.5px; margin: 10px 2px 0; display: none; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+  .done { display: none; text-align: center; padding: 8px 4px 4px; }
+  .done img { width: 150px; height: 150px; object-fit: contain; animation: pop .5s cubic-bezier(.2,1.4,.4,1); }
+  @keyframes pop { from { transform: scale(.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .done h3 { font-family: 'Cinzel', Georgia, serif; font-size: 22px; margin: 4px 0 6px; }
+  .done p { color: var(--muted); margin: 0 0 14px; font-size: 15px; }
+  .btn.ghost { background: var(--card); border: 1.5px solid var(--border); color: var(--ink); height: 44px; font-size: 14px; }
+  .signup.is-done form { display: none; }
+  .signup.is-done .done { display: block; }
+
+  /* Tour */
+  section { padding: 32px 0; }
+  .section-head { text-align: center; margin-bottom: 18px; }
+  .section-head h2 { font-family: 'Cinzel', Georgia, serif; font-size: clamp(24px, 6vw, 34px); margin: 0 0 6px; }
+  .section-head p { color: var(--muted); margin: 0; }
+  .tour { max-width: 520px; margin: 0 auto; padding: 16px 16px 20px; position: relative; user-select: none; -webkit-user-select: none; }
+  .bars { display: flex; gap: 6px; margin-bottom: 8px; }
+  .bars span { flex: 1; height: 4px; border-radius: 2px; background: var(--border); overflow: hidden; }
+  .bars i { display: block; height: 100%; width: 0; background: var(--gold); }
+  .slide-stage { position: relative; overflow: hidden; cursor: pointer; touch-action: pan-y; }
+  .track { display: flex; transition: transform .6s cubic-bezier(.4, 0, .2, 1); will-change: transform; }
+  .track.no-anim { transition: none; }
+  .slide { flex: 0 0 100%; min-width: 0; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 4px 6px; }
+  .slide img { width: 210px; height: 210px; object-fit: contain; margin: 6px 0 8px; transform: translateY(8px) scale(.96); transition: transform .6s cubic-bezier(.2,.9,.3,1); }
+  .slide.active img { transform: none; }
+  .slide h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 23px; line-height: 1.25; margin: 4px 0 8px; }
+  .slide h3 em { font-style: normal; color: var(--gold); }
+  .slide p { color: var(--muted); margin: 0 auto; max-width: 26em; font-size: 15px; }
+  .tour-nav { display: flex; justify-content: center; gap: 10px; margin-top: 4px; }
+  .tour-nav button { width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--border); background: var(--card); font-size: 18px; color: var(--muted); cursor: pointer; }
+
+  /* FAQ */
+  .faq { max-width: 680px; margin: 0 auto; display: grid; gap: 10px; }
+  details { padding: 4px 16px; }
+  summary { cursor: pointer; font-weight: 700; padding: 12px 0; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; color: var(--gold); font-size: 20px; line-height: 1; }
+  details[open] summary::after { content: '–'; }
+  details p { margin: 0 0 14px; color: var(--muted); }
+
+  .cta-again { text-align: center; }
+  .cta-again img { width: 140px; height: 140px; object-fit: contain; }
+  .cta-again h2 { font-family: 'Cinzel', Georgia, serif; font-size: clamp(22px, 5.6vw, 30px); margin: 4px 0 14px; }
+
+  /* Footer */
+  footer { border-top: 1px solid var(--border); padding: 24px 0 32px; color: var(--muted); font-size: 13.5px; }
+  footer .wrap { display: grid; gap: 10px; }
+  footer nav { display: flex; gap: 16px; flex-wrap: wrap; }
+  footer nav a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  footer p { margin: 0; }
+
+  @media (min-width: 860px) {
+    .hero { padding: 28px 0 48px; }
+    .hero .wrap { grid-template-columns: 1.15fr 1fr; gap: 32px; }
+    .hero-cub { order: 2; }
+    .hero-cub img { width: 420px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
 </head>
 <body>
 
-  <header>
-    <a href="#" class="logo">
-      <img src="logo.png" alt="Tiger Lugs Logo" class="logo-img-sm" onerror="this.style.display='none'">
-      Tiger Lugs
+<header>
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Tiger Lugs home">
+      <img src="assets/logo.webp" alt="" width="40" height="40">
+      <span>TIGER LUGS</span>
     </a>
-    <nav>
-      <a href="#features">Features</a>
-      <a href="#about">Company</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <section class="hero">
-      <!-- Mascot Artwork Showcase -->
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <div class="hero-cub">
+        <img id="heroCub" src="assets/cub_wave.webp" alt="The Tiger Lugs tiger cub waving hello, wearing a wristwatch" width="300" height="300">
+      </div>
       <div>
-        <img src="logo.png" alt="Tiger Lugs Watch Collector Platform" class="hero-artwork" onerror="this.style.display='none'">
-      </div>
+        <p class="eyebrow">Coming soon to iPhone &amp; Android</p>
+        <h1>Wear your watches. <span class="gold">We'll keep score.</span></h1>
+        <p class="lede">Tiger Lugs is built for collectors who actually wear their watches. Log what's on your wrist each day and Tiger Lugs does the rest: your streak, what each watch really costs per wear, the pieces you reach for most, and plenty more to discover. All kept in a beautiful virtual watch box.</p>
 
-      <div class="badge">Mobile & Web App for Watch Collectors</div>
-      <h1>Elevate your collection with <span class="gradient">Tiger Lugs</span>.</h1>
-      <p class="subtitle">The definitive mobile and web platform crafted for horology enthusiasts. Catalog your timepieces, track provenance, pair straps, and record service histories with elegance.</p>
-      
-      <div class="cta-container">
-        <!-- Apple App Store -->
-        <div class="btn-store">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.84c.66-.81 1.11-1.94.99-3.07-.96.04-2.12.64-2.8 1.44-.59.69-1.12 1.83-.98 2.93 1.07.08 2.15-.55 2.79-1.3"/>
-          </svg>
-          <div>
-            <div class="store-label">Coming Soon to</div>
-            <div class="store-name">Apple App Store</div>
+        <div class="card signup" id="signup">
+          <form id="waitlistForm" novalidate>
+            <label class="title" for="email">Join the launch list</label>
+            <div class="field">
+              <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required>
+            </div>
+            <div class="platforms" role="group" aria-label="Which phone do you use? (optional)">
+              <span class="hint">I use</span>
+              <button type="button" class="chip" data-platform="ios" aria-pressed="false">iPhone</button>
+              <button type="button" class="chip" data-platform="android" aria-pressed="false">Android</button>
+            </div>
+            <div class="hp" aria-hidden="true"><label>Company <input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+            <button class="btn submit" type="submit" id="submitBtn">NOTIFY ME AT LAUNCH</button>
+            <p class="error" id="formError" role="alert"></p>
+            <p class="fine">One email when we launch. No spam, unsubscribe anytime. See our <a href="privacy/">Privacy Policy</a>.</p>
+          </form>
+          <div class="done" aria-live="polite">
+            <img src="assets/cub_celebrate.webp" alt="" width="150" height="150">
+            <h3>You're on the list!</h3>
+            <p>We'll email you the moment Tiger Lugs is ready.</p>
+            <button class="btn ghost" type="button" id="shareBtn">Tell a fellow collector</button>
           </div>
         </div>
-
-        <!-- Google Play Store -->
-        <div class="btn-store">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M3.609 1.814L13.792 12 3.61 22.186a2.036 2.036 0 0 1-.61-1.446V3.26c0-.568.225-1.092.609-1.446zm11.235 11.238L5.352 22.756c.467.247 1.037.263 1.547-.024l9.043-5.183-1.098-4.497zm0-2.104l1.098-4.497-9.043-5.183c-.51-.287-1.08-.271-1.547-.024l9.492 9.704zM16.5 12l2.946-1.688a1.69 1.69 0 0 1 0 2.928L16.5 12z"/>
-          </svg>
-          <div>
-            <div class="store-label">Coming Soon to</div>
-            <div class="store-name">Google Play Store</div>
-          </div>
-        </div>
       </div>
-    </section>
-
-    <section id="features" class="features">
-      <h2 class="section-title">Built for Connoisseurs</h2>
-      <p class="section-subtitle">Every feature thoughtfully designed for the nuance of watch collecting.</p>
-      
-      <div class="grid">
-        <div class="card">
-          <div class="icon">⌚</div>
-          <h3>Vault & Provenance</h3>
-          <p>Organize your collection with high-resolution imagery, reference numbers, serial records, purchase documentation, and current market valuations.</p>
-        </div>
-        <div class="card">
-          <div class="icon">📏</div>
-          <h3>Lug-to-Lug & Straps</h3>
-          <p>Detailed dimensional tracking including case diameter, lug width, and strap matching to keep your pairings cataloged and ready.</p>
-        </div>
-        <div class="card">
-          <div class="icon">🛠️</div>
-          <h3>Service & Accuracy</h3>
-          <p>Log service histories, routine overhauls, pressure testing certifications, and daily timing accuracy records in one secure place.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="company-section">
-      <div class="company-box">
-        <h2>About VinDee LLC</h2>
-        <p>Tiger Lugs is an official mobile and web software platform proudly engineered and operated by <strong>VinDee LLC</strong>, a California limited liability company based in <strong>Vista, CA</strong>.</p>
-        
-        <div id="contact">
-          <h3 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.85rem; color: var(--text-muted);">SUPPORT & INQUIRIES</h3>
-          <a href="mailto:support@tigerlugs.com" class="contact-badge">
-            ✉️ support@tigerlugs.com
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div>
-      © 2026 VinDee LLC. All rights reserved.
     </div>
-    <div class="legal-links">
+  </div>
+
+  <section id="tour">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>A peek inside</h2>
+        <p>A quick look at what's coming.</p>
+      </div>
+      <div class="card tour" id="tourCard" aria-roledescription="carousel" aria-label="App highlights">
+        <div class="bars" aria-hidden="true"></div>
+        <div class="slide-stage" id="stage">
+          <div class="track" id="track">
+          <div class="slide">
+            <img src="assets/cub_first_wear.webp" alt="" width="230" height="230">
+            <h3>Log a wear in <em>one tap</em></h3>
+            <p>Pick today's watch and tap once. Tiger Lugs remembers every day each piece spent on your wrist.</p>
+          </div>
+          <div class="slide">
+            <img src="assets/cub_journal.webp" alt="" width="230" height="230">
+            <h3>Build a streak you'll <em>want to keep</em></h3>
+            <p>A 7-day rhythm, streak freezes for the busy days, and a journal of every wear and every occasion.</p>
+          </div>
+          <div class="slide">
+            <img src="assets/cub_hello.webp" alt="" width="230" height="230">
+            <h3>See what each watch <em>really costs</em></h3>
+            <p>Cost per wear drops every time you strap one on, so your favourites prove their worth.</p>
+          </div>
+          <div class="slide">
+            <img src="assets/cub_watchbox.webp" alt="" width="230" height="230">
+            <h3>Your collection, <em>in a box</em></h3>
+            <p>A photorealistic virtual watch box. Snap a photo and we lift the background so every watch sits on its cushion.</p>
+          </div>
+          <div class="slide">
+            <img src="assets/cub_insights.webp" alt="" width="230" height="230">
+            <h3>Know your rotation <em>inside out</em></h3>
+            <p>Most worn, the styles you reach for, and the pieces still waiting for their turn.</p>
+          </div>
+          <div class="slide">
+            <img src="assets/cub_loupe.webp" alt="" width="230" height="230">
+            <h3>Bench tools, <em>built in</em></h3>
+            <p>Set the time to the second, line up your moon phase, and check your watch's accuracy with the Time Grapher.</p>
+          </div>
+          </div>
+        </div>
+        <div class="tour-nav">
+          <button type="button" id="prevBtn" aria-label="Previous">‹</button>
+          <button type="button" id="nextBtn" aria-label="Next">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><h2>Questions</h2></div>
+      <div class="faq">
+        <details class="card"><summary>When does Tiger Lugs launch?</summary><p>Soon, on iPhone and Android at the same time. Join the list and you'll be the first to know.</p></details>
+        <details class="card"><summary>What will you email me?</summary><p>The launch announcement, and a heads-up if we open early access. No spam, and every email has an unsubscribe link.</p></details>
+        <details class="card"><summary>Is my collection private?</summary><p>Yes. Your collection is yours. We don't sell your data, and what you add stays private to your account.</p></details>
+        <details class="card"><summary>Who makes Tiger Lugs?</summary><p>VinDee LLC, an independent company in Vista, California, building the app we wanted for our own watches.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-again">
+    <div class="wrap">
+      <img src="assets/cub_bell.webp" alt="" width="140" height="140">
+      <h2>Don't miss the launch.</h2>
+      <a class="btn" href="#signup" style="display:inline-flex;align-items:center;text-decoration:none">NOTIFY ME AT LAUNCH</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav>
       <a href="privacy/">Privacy Policy</a>
       <a href="terms/">Terms of Service</a>
       <a href="delete-account/">Delete Account</a>
-    </div>
-  </footer>
+      <a href="mailto:support@tigerlugs.com">support@tigerlugs.com</a>
+    </nav>
+    <p>Tiger Lugs is made and operated by VinDee LLC, a California limited liability company based in Vista, CA.</p>
+    <p>Not affiliated with any watch brand. All trademarks belong to their owners.</p>
+    <p>© 2026 VinDee LLC. All rights reserved.</p>
+  </div>
+</footer>
 
-  <script>
-    function openModal(id) {
-      document.getElementById(id).style.display = 'flex';
+<script>
+(() => {
+  const SUPABASE_URL = 'https://tnzndqssiehrnmivxlwu.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_aTHOy-fTEKtIKIsXwKXWsg_DIu_5Hw5';
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Hero cub: the same wave the app's Welcome cub does, then a blink now and then.
+  const cub = document.getElementById('heroCub');
+  const frames = ['cub_wave_wave_mid', 'cub_wave_wave2', 'cub_wave_wave_mid', 'cub_wave', 'cub_wave_wave_mid', 'cub_wave_wave2', 'cub_wave_wave_mid', 'cub_wave'];
+  ['cub_wave_wave_mid', 'cub_wave_wave2', 'cub_wave_blink'].forEach(f => { const i = new Image(); i.src = `assets/${f}.webp`; });
+  const show = f => { cub.src = `assets/${f}.webp`; };
+  const wave = () => frames.forEach((f, i) => setTimeout(() => show(f), i * 130));
+  const blink = () => { show('cub_wave_blink'); setTimeout(() => show('cub_wave'), 140); };
+  if (!reduce) {
+    setTimeout(wave, 600);
+    let beat = 0;
+    setInterval(() => { (++beat % 3 === 0) ? wave() : blink(); }, 3200);
+  }
+
+  // Where the visitor came from: ?ref=reddit, a utm_source, or the referrer's site.
+  const params = new URLSearchParams(location.search);
+  let source = params.get('ref') || params.get('utm_source') || '';
+  if (!source && document.referrer) {
+    try { source = new URL(document.referrer).hostname.replace(/^www\./, ''); } catch (_) {}
+  }
+  source = (source || 'direct').slice(0, 40);
+
+  // Signup
+  const card = document.getElementById('signup');
+  const form = document.getElementById('waitlistForm');
+  const email = document.getElementById('email');
+  const btn = document.getElementById('submitBtn');
+  const err = document.getElementById('formError');
+  let platform = null;
+  document.querySelectorAll('.chip').forEach(chip => chip.addEventListener('click', () => {
+    const on = chip.getAttribute('aria-pressed') !== 'true';
+    document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', 'false'));
+    chip.setAttribute('aria-pressed', on ? 'true' : 'false');
+    platform = on ? chip.dataset.platform : null;
+  }));
+  const fail = msg => { err.textContent = msg; err.style.display = 'block'; btn.disabled = false; btn.textContent = 'NOTIFY ME AT LAUNCH'; };
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    err.style.display = 'none';
+    const value = email.value.trim();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value)) { fail('Please enter a valid email address.'); email.focus(); return; }
+    if (form.company.value) { card.classList.add('is-done'); return; } // bots fill the hidden field
+    btn.disabled = true; btn.textContent = 'SAVING…';
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/join_launch_waitlist`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` },
+        body: JSON.stringify({ p_email: value, p_platform: platform, p_source: source }),
+      });
+      if (res.ok) { card.classList.add('is-done'); return; }
+      const body = await res.json().catch(() => ({}));
+      fail(body.code === '22023' ? 'Please check your email address.' : 'Something went wrong. Please try again in a moment.');
+    } catch (_) {
+      fail('Couldn\'t reach us. Check your connection and try again.');
     }
-    function closeModal(id) {
-      document.getElementById(id).style.display = 'none';
-    }
-    window.onclick = function(e) {
-      if (e.target.classList.contains('modal')) {
-        e.target.style.display = 'none';
-      }
-    }
-  </script>
+  });
+  document.getElementById('shareBtn').addEventListener('click', async () => {
+    const data = { title: 'Tiger Lugs', text: 'A new app for watch collectors, coming soon. Join the launch list:', url: 'https://tigerlugs.com/' };
+    if (navigator.share) { try { await navigator.share(data); } catch (_) {} return; }
+    try { await navigator.clipboard.writeText(data.url); document.getElementById('shareBtn').textContent = 'Link copied'; } catch (_) {}
+  });
+
+  // Tour: a slideshow that advances on its own every few seconds (it never
+  // waits for a click), with arrows, taps and swipes as extras. It only
+  // pauses while a finger is on it or the tab is hidden.
+  const slides = [...document.querySelectorAll('.slide')];
+  const track = document.getElementById('track');
+  const bars = document.querySelector('.bars');
+  slides.forEach(() => { const s = document.createElement('span'); s.appendChild(document.createElement('i')); bars.appendChild(s); });
+  const fills = [...bars.querySelectorAll('i')];
+  const DURATION = 4200;
+  let idx = 0, start = performance.now(), held = false;
+  const go = n => {
+    const next = (n + slides.length) % slides.length;
+    // Wrapping round jumps straight back instead of sweeping across every slide.
+    const wrap = Math.abs(next - idx) > 1;
+    track.classList.toggle('no-anim', wrap);
+    idx = next;
+    track.style.transform = `translateX(-${idx * 100}%)`;
+    if (wrap) requestAnimationFrame(() => requestAnimationFrame(() => track.classList.remove('no-anim')));
+    fills.forEach((f, i) => { f.style.width = i < idx ? '100%' : '0%'; });
+    slides.forEach((s, i) => s.setAttribute('aria-hidden', i === idx ? 'false' : 'true'));
+    start = performance.now();
+  };
+  // A plain timer, not requestAnimationFrame: rAF stops in background tabs
+  // and in some embedded frames, which would freeze the slideshow.
+  let elapsed = 0;
+  setInterval(() => {
+    if (held || document.hidden) return;
+    elapsed = Math.min(DURATION, performance.now() - start);
+    fills[idx].style.width = (elapsed / DURATION * 100) + '%';
+    if (elapsed >= DURATION) go(idx + 1);
+  }, 50);
+  go(0);
+  const stage = document.getElementById('stage');
+  stage.addEventListener('click', e => {
+    const r = stage.getBoundingClientRect();
+    go(e.clientX - r.left < r.width / 3 ? idx - 1 : idx + 1);
+  });
+  document.getElementById('prevBtn').addEventListener('click', () => go(idx - 1));
+  document.getElementById('nextBtn').addEventListener('click', () => go(idx + 1));
+  let x0 = null, heldAt = 0;
+  stage.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; held = true; heldAt = performance.now(); }, { passive: true });
+  stage.addEventListener('touchend', e => {
+    held = false;
+    start += performance.now() - heldAt; // resume where it was
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) > 40) { e.preventDefault(); go(dx < 0 ? idx + 1 : idx - 1); }
+  });
+})();
+</script>
 </body>
 </html>
