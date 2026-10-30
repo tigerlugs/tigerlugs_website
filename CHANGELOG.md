@@ -8,6 +8,14 @@ check out its files and publish them again.
 Homepage source: `tool/website/index.template.html` in the app repo.
 Legal pages: built from `docs/legal/` by `tool/build_legal_site.py`.
 
+## public-2026-10-29-account-deletion
+
+- /delete-account: explains deleting from the app (Settings > Delete
+  Account) with email as a fallback, and the 30-day window to restore by
+  signing back in. Lists the launch-list signup among what's deleted.
+- /privacy: the account deletion section and retention now describe the
+  30-day restore window. Earlier versions said email only.
+
 ## public-2026-10-29-waitlist (launch waitlist redesign)
 
 - New homepage built around a launch waitlist, for sharing from Reddit
