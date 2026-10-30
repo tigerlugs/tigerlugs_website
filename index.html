@@ -53,10 +53,10 @@
 
   /* Header */
   header { padding: 18px 0 8px; }
-  header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
-  .brand img { width: 40px; height: 40px; object-fit: contain; }
-  .brand span { font-family: 'Cinzel', Georgia, serif; font-weight: 700; letter-spacing: 0.12em; font-size: 19px; }
+  /* Wordmark only: the hero cub just below is the logo on this page. */
+  header .wrap { display: flex; justify-content: center; }
+  .brand { text-decoration: none; color: var(--ink); }
+  .brand span { font-family: 'Cinzel', Georgia, serif; font-weight: 700; letter-spacing: 0.14em; font-size: 20px; }
 
   /* Hero */
   .hero { padding: 12px 0 32px; }
@@ -167,7 +167,6 @@
 <header>
   <div class="wrap">
     <a class="brand" href="/" aria-label="Tiger Lugs home">
-      <img src="assets/logo.webp" alt="" width="40" height="40">
       <span>TIGER LUGS</span>
     </a>
   </div>

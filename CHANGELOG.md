@@ -8,6 +8,18 @@ check out its files and publish them again.
 Homepage source: `tool/website/index.template.html` in the app repo.
 Legal pages: built from `docs/legal/` by `tool/build_legal_site.py`.
 
+## public-2026-10-29-on-device-photos
+
+- /privacy: photos are now described as processed on your device (Apple
+  Vision / Google ML Kit); the Cloudflare row is gone (the app never
+  actually reached it, and the upload step was removed). The policy no
+  longer mentions a Tiger Lugs web app (the full app is iPhone and Android
+  only). Google Fonts now reads "app and website", since the phone apps
+  load fonts from Google too.
+- Homepage: the small cub logo next to the wordmark is removed and the
+  "TIGER LUGS" wordmark is centered. The waving hero cub right below is
+  the logo on this page, so the two were a double on phones.
+
 ## public-2026-10-29-account-deletion
 
 - /delete-account: explains deleting from the app (Settings > Delete
