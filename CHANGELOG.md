@@ -8,6 +8,16 @@ check out its files and publish them again.
 Homepage source: `tool/website/index.template.html` in the app repo.
 Legal pages: built from `docs/legal/` by `tool/build_legal_site.py`.
 
+## public-2026-11-05-crash-reports
+
+- /privacy: crash reports (Sentry) added: what they contain, that they're
+  never linked to your account (no name, email, IP, screenshots or
+  collection data), Sentry in the providers table, and its retention.
+  New use: aggregated, de-identified statistics (e.g. most-worn brands),
+  never revealing an individual's collection; anything showing your own
+  numbers to others is opt-in. Cloud History is now restored on request
+  (the in-app button was removed). Effective date November 5, 2026.
+
 ## public-2026-10-29-on-device-photos
 
 - /privacy: photos are now described as processed on your device (Apple
